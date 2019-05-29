@@ -1,0 +1,102 @@
+body {
+    color: black;
+    line-height: 1.2;
+    font-size: 100%;
+    font-family: Verdana, Helvetica, sans-serif; }
+
+#header{
+    clear: both;
+    background-color: bisque;
+    margin-top: 2px;
+    margin-left:2px;
+    margin-right:2px;
+    margin-bottom:2px;
+    border: 2px solid maroon;
+    text-align: center;
+    line-height: 2;
+    font-size: 200%;
+    color:black;
+    -webkit-border-radius: 8pt;
+    -moz-border-radius: 8pt;
+    border-radius: 8pt;
+
+}
+
+#menu{
+    float: left;
+    margin-left: 2px;
+    width: 20%;
+    min-width: 20%;
+}
+ul.menu {
+    list-style: none;
+    padding:0;
+    margin: 0;
+
+
+}
+
+li.menu  {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: rgba(150, 0, 0, .6);
+    -webkit-border-radius: 8pt;
+    -moz-border-radius: 8pt;
+    border-radius: 8pt;
+
+}
+.menu li:hover {
+    background-color: rgba(150,0,0,1);
+}
+
+#content{
+    float: left;
+    margin-left: 10px;
+    background-color: azure;
+    border-top: 2px solid maroon;
+    border-left: 2px solid maroon;
+    border-right: 2px solid maroon;
+    padding: 2px;
+
+    width:78%;
+    min-width: 20%;
+    -webkit-border-radius: 8pt;
+    -moz-border-radius: 8pt;
+    border-radius: 8pt;
+}
+
+#footer{
+    clear: both;
+    background-color: bisque;
+    margin-top: 2px;
+    margin-left:2px;
+    margin-right:2px;
+    margin-bottom:2px;
+    border: 2px solid maroon;
+    text-align: center;
+    line-height: 2;
+    font-size: 150%;
+    -webkit-border-radius: 8pt;
+    -moz-border-radius: 8pt;
+    border-radius: 8pt;
+}
+
+.titolo{
+    padding: 2px 2px 2px 2px;
+    color: black;
+    line-height: 1.5;
+    font-size: 150%;
+
+}
+
+.sezione{
+    border-bottom: 2px solid maroon;
+
+}
+
+a.descrizione, a.grafici, a.considerazioni, a.commento{
+    text-decoration: none;
+    color: azure;
+}
+
+
