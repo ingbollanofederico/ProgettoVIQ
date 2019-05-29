@@ -12,8 +12,8 @@
                 //Creazione
                 var trace={x:[],y:[], type:"bar", orientation:"h"};
                 for(let i=0; i<data.length; ++i){
-                    trace.y.push(data[i][1]);
-                    trace.x.push(data[i][8]);
+                    trace.y.push(data[i]['Regione']);
+                    trace.x.push(data[i]['Provincia']);
                 }
                 Alayout={Title: "Totale Hotel per Province"};
                 Plotly.plot(document.getElementById("graph"), [trace], Alayout);
@@ -236,6 +236,12 @@
 
 
     </section>
+
+    <section  class="sezione" id="tabelle">
+        <div id="originalTab"></div>
+
+    </section>
+
     <section  class="sezione" id="grafici">
         <h1 class="titolo">Grafici</h1>
         <div id="graph" onload="createFromCsv()"></div>
