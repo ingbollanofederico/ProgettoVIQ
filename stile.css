@@ -100,3 +100,96 @@ a.descrizione, a.grafici, a.considerazioni, a.commento{
 }
 
 
+/*CAPIRE COSA SELEZIONARE DA css TABELLE*/
+table {
+    border-top: 2pt solid black;
+    border-bottom: 2pt solid black;
+    font-family: sans-serif;
+    border-collapse: collapse;
+}
+
+table tr:nth-child(2n+1) {
+    background-color: rgb(230, 230, 230);
+}
+
+table tr:first-child {
+    border-bottom: 1pt solid black;
+    background-color: snow;
+}
+
+th, td {
+    padding: 3pt;
+    text-align: right;
+}
+
+td:first-child {
+    text-align: left;
+}
+
+/** Champions League **/
+td.champions {
+    background-color: rgba(0, 0, 255, .4);
+    border-left: solid 3pt rgba(0, 0, 255, 1);
+}
+
+/** Preliminari Champions League **/
+td.preliminari {
+    background-color: rgba(0, 255, 0, .4);
+    border-left: solid 3pt rgba(0, 255, 0, 1);
+}
+
+/** Europa League **/
+td.europa {
+    background-color: rgba(255, 217, 0, .4);
+    border-left: solid 3pt rgba(255, 217, 0, 1);
+}
+
+td {
+    /* relative applies to the absolute
+       position of the embedded elements */
+    position: relative;
+}
+
+/** Tooltip con solo CSS (Tecnica 2) */
+td > em {
+    display: none; /* inizialmente invisibile */
+    background-color: yellow;
+    color: blue;
+    position: absolute; /* non interferisce con il posizionamento degli altri elementi */
+    width: 300px;
+    z-index: 30;
+    padding: 3pt;
+    border: chocolate 1px solid;
+    border-radius: 2pt;
+    font-size: 80%;
+    font-family: sans-serif;
+    top: 10px;
+    left: 5em;
+    margin: auto;
+}
+
+tr:hover em { /* visualizzato on-hover */
+    display: block;
+}
+
+/** Tooltip con JS events (Tecnica 3) */
+.tooltip {
+    display: none;
+    position: fixed;
+
+    background-color: snow;
+    color: gray;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    z-index: 30;
+    font-size: 80%;
+    font-family: sans-serif;
+    box-shadow: 3px 3px 8px;
+}
+
+
+
+
+
+

@@ -61,12 +61,26 @@ function okStatus(s) {
 
 
 window.onload = function () {
+    loadASync("DATASET_PROVINCE.csv", function (data) {
+
+        let csv = csvParse(data);
+        console.log(csv);
+        let tableElement = tableToHtmlElement(csv);
+        let originalTabProvince = document.getElementById('originalTabProvince');
+        originalTabProvince.append(tableElement);
+    });
+
     loadASync("DATASET_REGIONI.csv", function (data) {
 
         let csv = csvParse(data);
         console.log(csv);
         let tableElement = tableToHtmlElement(csv);
-        let originalTab = document.getElementById('originalTab');
-        originalTab.append(tableElement);
+        let originalTabRegioni = document.getElementById('originalTabRegioni');
+        originalTabRegioni.append(tableElement);
     });
 }
+
+
+
+
+
