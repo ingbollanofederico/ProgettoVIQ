@@ -24,7 +24,7 @@ body {
 
 #menu{
     float: left;
-    margin-left: 2px;
+    margin-left: 0.5%;
     width: 20%;
     min-width: 20%;
 }
@@ -94,7 +94,7 @@ li.menu  {
 
 }
 
-a.descrizione, a.grafici, a.considerazioni, a.commento{
+a.descrizione, a.tabelle, a.grafici, a.considerazioni, a.commento{
     text-decoration: none;
     color: azure;
 }
@@ -105,16 +105,19 @@ a.descrizione, a.grafici, a.considerazioni, a.commento{
 
 
 
-
-
-
 /*CAPIRE COSA SELEZIONARE DA css TABELLE*/
 table {
-    border-top: 2pt solid black;
-    border-bottom: 2pt solid black;
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    border-top: 1pt solid black;
     font-family: sans-serif;
     border-collapse: collapse;
+
 }
+
+
 
 table tr:nth-child(2n+1) {
     background-color: rgb(230, 230, 230);
@@ -125,6 +128,8 @@ table tr:first-child {
     background-color: snow;
 }
 
+
+
 th, td {
     padding: 3pt;
     text-align: right;
@@ -134,29 +139,6 @@ td:first-child {
     text-align: left;
 }
 
-/** Champions League **/
-td.champions {
-    background-color: rgba(0, 0, 255, .4);
-    border-left: solid 3pt rgba(0, 0, 255, 1);
-}
-
-/** Preliminari Champions League **/
-td.preliminari {
-    background-color: rgba(0, 255, 0, .4);
-    border-left: solid 3pt rgba(0, 255, 0, 1);
-}
-
-/** Europa League **/
-td.europa {
-    background-color: rgba(255, 217, 0, .4);
-    border-left: solid 3pt rgba(255, 217, 0, 1);
-}
-
-td {
-    /* relative applies to the absolute
-       position of the embedded elements */
-    position: relative;
-}
 
 /** Tooltip con solo CSS (Tecnica 2) */
 td > em {

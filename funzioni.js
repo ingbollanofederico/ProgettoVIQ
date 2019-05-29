@@ -14,7 +14,7 @@ function loadASync(url, success) {
 
 function csvParse(csv) {
     'use strict';
-    let csvRE = /(,|^|\n|\r|\r\n)[ \t]*(?:([^",\n\r]*)|"((?:[^"]*|"")*)")[ ( \t)]*/g;
+    let csvRE = /(,|^|\n|\r|\r\n)[ \t]*(?:([^",\n\r]*)|"((?:[^"]*|"")*)")[ ( \r)]*/g;
     let heads = [], rows = [];
     let row, col, line = -1;
     while (true) {
@@ -61,7 +61,7 @@ function okStatus(s) {
 
 
 window.onload = function () {
-    loadASync("DATASET_PROVINCE.csv", function (data) {
+    loadASync("DATASET_PROVINCE_MOD.csv", function (data) {
 
         let csv = csvParse(data);
         console.log(csv);
@@ -70,7 +70,7 @@ window.onload = function () {
         originalTabProvince.append(tableElement);
     });
 
-    loadASync("DATASET_REGIONI.csv", function (data) {
+    loadASync("DATASET_REGIONI_MOD.csv", function (data) {
 
         let csv = csvParse(data);
         console.log(csv);
@@ -78,6 +78,45 @@ window.onload = function () {
         let originalTabRegioni = document.getElementById('originalTabRegioni');
         originalTabRegioni.append(tableElement);
     });
+
+    Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
+            //Creazione
+            let regioni = [];
+            let numHotel = [];
+
+            for (let i = 1; i < data.length; i++) {
+                let regione = data[i]["Regione"];
+                regioni.push(regione);
+
+                let hotel = data[i]["TotaleHotel"];
+                numHotel.push(hotel);
+            }
+            console.log("A:" + regioni + " B:" + numHotel);
+
+            let trace = [{
+                name: "province",
+                y: numHotel,
+                x: regioni,
+                orientation: "v",
+                type: "bar",
+
+                marker: {color: 'salmon'},
+            }];
+            let layout = {
+
+                margin: {t: 40, l: 70, r: 30, b: 100},
+
+                hovermode: "y",
+
+                legend: {
+                    y: 1.02, x: 0.5,
+                    yanchor: "bottom",
+                    xanchor: "center",
+                    orientation: "h",
+                }
+            };
+            Plotly.plot("graph", trace, layout);
+        });
 };
 
 
