@@ -14,7 +14,7 @@ function loadASync(url, success) {
 
 function csvParse(csv) {
     'use strict';
-    let csvRE = /(,|^|\n|\r|\r\n)[ \t]*(?:([^",\n\r]*)|"((?:[^"]*|"")*)")[ (\t|\r)]*/g;
+    let csvRE = /(,|^|\n|\r|\r\n)[ \t]*(?:([^",\n\r]*)|"((?:[^"]*|"")*)")[ ( \t)]*/g;
     let heads = [], rows = [];
     let row, col, line = -1;
     while (true) {
@@ -78,7 +78,7 @@ window.onload = function () {
         let originalTabRegioni = document.getElementById('originalTabRegioni');
         originalTabRegioni.append(tableElement);
     });
-}
+};
 
 
 

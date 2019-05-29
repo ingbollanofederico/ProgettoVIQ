@@ -99,6 +99,14 @@ a.descrizione, a.grafici, a.considerazioni, a.commento{
     color: azure;
 }
 
+#graph{
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+
+
 
 /*CAPIRE COSA SELEZIONARE DA css TABELLE*/
 table {
