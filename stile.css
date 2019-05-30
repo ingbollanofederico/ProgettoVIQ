@@ -148,6 +148,56 @@ td:first-child {
 }
 
 
+/** Tooltip con solo CSS (Tecnica 2) */
+td > em {
+    display: none; /* inizialmente invisibile */
+    background-color: yellow;
+    color: blue;
+    position: absolute; /* non interferisce con il posizionamento degli altri elementi */
+    width: 300px;
+    z-index: 30;
+    padding: 3pt;
+    border: chocolate 1px solid;
+    border-radius: 2pt;
+    font-size: 80%;
+    font-family: sans-serif;
+    top: 10px;
+    left: 5em;
+    margin: auto;
+}
+
+tr:hover em { /* visualizzato on-hover */
+    display: block;
+}
+
+/** Tooltip con JS events (Tecnica 3) */
+.tooltip {
+    display: none;
+    position: fixed;
+
+    background-color: snow;
+    color: gray;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    z-index: 30;
+    font-size: 80%;
+    font-family: sans-serif;
+    box-shadow: 3px 3px 8px;
+}
+
+[class*="menu"]{
+    margin: 1em 1em 1em 1em;
+
+}
+
+.checkturisti{
+    margin: 1em 1em 1em 1em;
+
+}
+
+
+
 
 
 
