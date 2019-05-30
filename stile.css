@@ -7,26 +7,28 @@ body {
 #header{
     clear: both;
     background-color: bisque;
-    margin-top: 2px;
-    margin-left:2px;
-    margin-right:2px;
-    margin-bottom:2px;
-    border: 2px solid maroon;
+    margin-top: 0.1em;
+    margin-left:0.1em;
+    margin-right:0.1em;
+    margin-bottom:0.1em;
+    border: 0.1em solid maroon;
     text-align: center;
     line-height: 2;
     font-size: 200%;
     color:black;
-    -webkit-border-radius: 8pt;
-    -moz-border-radius: 8pt;
-    border-radius: 8pt;
+    -webkit-border-radius: 0.1em;
+    -moz-border-radius: 0.1em;
+    border-radius: 0.5em;
 
 }
 
 #menu{
     float: left;
-    margin-left: 0.5%;
-    width: 10%;
+    width: 8%;
     position: fixed;
+    margin-left: 0.5%;
+    margin-top: 1em;
+
 }
 ul.menu {
     list-style: none;
@@ -37,12 +39,12 @@ ul.menu {
 }
 
 li.menu  {
-    padding: 8px 0px 8px 8px;
-    margin-bottom: 7px;
+    padding: 0.5em 0 0.5em 0.5em;
+    margin-bottom: 0.3em;
     background-color: rgba(150, 0, 0, .6);
-    -webkit-border-radius: 8pt;
-    -moz-border-radius: 8pt;
-    border-radius: 8pt;
+    -webkit-border-radius: 0.1em;
+    -moz-border-radius: 0.1em;
+    border-radius: 0.5em;
 
 }
 .menu li:hover {
@@ -51,38 +53,42 @@ li.menu  {
 
 #content{
     float: left;
-    margin-left: 10%;
+    margin-left: 9%;
+    margin-top: 1em;
+    margin-bottom:1em;
     background-color: azure;
-    border-top: 2px solid maroon;
-    border-left: 2px solid maroon;
-    border-right: 2px solid maroon;
-    padding: 2px;
+    border-left: 0.1em solid maroon;
+    border-right: 0.1em solid maroon;
+    border-top: 0.1em solid maroon;
+    border-bottom: 0.1em solid maroon;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 
-    width:90%;
+    width:89.5%;
     min-width: 20%;
-    -webkit-border-radius: 8pt;
-    -moz-border-radius: 8pt;
-    border-radius: 8pt;
+    -webkit-border-radius: 0.1em;
+    -moz-border-radius: 0.1em;
+    border-radius: 0.5em;
 }
 
 #footer{
     clear: both;
     background-color: bisque;
-    margin-top: 2px;
-    margin-left:2px;
-    margin-right:2px;
-    margin-bottom:2px;
-    border: 2px solid maroon;
+    margin-top: 1em;
+    margin-left:0.1em;
+    margin-right:0.1em;
+    margin-bottom:0.1em;
+    border: 0.1em solid maroon;
     text-align: center;
     line-height: 2;
     font-size: 150%;
-    -webkit-border-radius: 8pt;
-    -moz-border-radius: 8pt;
-    border-radius: 8pt;
+    -webkit-border-radius: 0.1em;
+    -moz-border-radius: 0.1em;
+    border-radius: 0.5em;
 }
 
 .titolo{
-    padding: 2px 2px 2px 2px;
+    padding: 0.1em 0.1em 0.1em 0.1em;
     color: black;
     line-height: 1.5;
     font-size: 150%;
@@ -90,7 +96,7 @@ li.menu  {
 }
 
 .sezione{
-    border-bottom: 2px solid maroon;
+    border-bottom: 0.1em solid maroon;
 
 }
 
@@ -100,16 +106,18 @@ a.descrizione, a.tabelle, a.grafici, a.analisi, a.commento{
 }
 
 #graph{
-    padding: 10px 10px 10px 10px;
+    padding: 1em 1em 1em 1em;
+}
+
+#originalTabRegioni, originalTabProvince{
+   text-align: center;
 }
 
 
 
 /*CAPIRE COSA SELEZIONARE DA css TABELLE*/
 table {
-    margin-top: 1em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin: auto;
     margin-bottom: 1em;
     border-top: 1pt solid black;
     font-family: sans-serif;
@@ -131,51 +139,12 @@ table tr:first-child {
 
 
 th, td {
-    padding: 3pt;
-    text-align: right;
+    padding: 0.2em;
+    text-align: left;
 }
 
 td:first-child {
     text-align: left;
-}
-
-
-/** Tooltip con solo CSS (Tecnica 2) */
-td > em {
-    display: none; /* inizialmente invisibile */
-    background-color: yellow;
-    color: blue;
-    position: absolute; /* non interferisce con il posizionamento degli altri elementi */
-    width: 300px;
-    z-index: 30;
-    padding: 3pt;
-    border: chocolate 1px solid;
-    border-radius: 2pt;
-    font-size: 80%;
-    font-family: sans-serif;
-    top: 10px;
-    left: 5em;
-    margin: auto;
-}
-
-tr:hover em { /* visualizzato on-hover */
-    display: block;
-}
-
-/** Tooltip con JS events (Tecnica 3) */
-.tooltip {
-    display: none;
-    position: fixed;
-
-    background-color: snow;
-    color: gray;
-    padding: 5px;
-    border: 1px solid gray;
-    border-radius: 3px;
-    z-index: 30;
-    font-size: 80%;
-    font-family: sans-serif;
-    box-shadow: 3px 3px 8px;
 }
 
 
