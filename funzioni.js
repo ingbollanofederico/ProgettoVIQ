@@ -121,10 +121,10 @@ window.onload = function () {
 
 function visibilityStelle(x){
 
-    if(x!="Hotel") {
+    if(x!="Hotel")
 
         document.f.sceltaStelle.style.visibility="hidden";
-    }
+
     else
         document.f.sceltaStelle.style.visibility="visible";
 }
