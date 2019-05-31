@@ -107,10 +107,13 @@ window.onload = function () {
                 name: "province",
                 y: numHotel,
                 x: regioni,
+                text:numHotel.map(String),
+                textposition: 'outside',
+                hoverinfo:'none',
                 orientation: "v",
                 type: "bar",
 
-                marker: {color: 'salmon'},
+                marker: {color: 'salmon', opacity: 0.6},
             }];
             let layout = {
 
@@ -132,12 +135,14 @@ window.onload = function () {
 
 function grafico(f1){
 
+    Plotly.purge("graph");
 
-    let regione = f1.sceltaLuogo.value; //italia vs regioni
-    let struttura = f1.sceltaStrutture.value; //hotel beb altri
+    var regione = f1.sceltaLuogo.value; //italia vs regioni
+    var struttura = f1.sceltaStrutture.value; //hotel beb altri
 
-    if(struttura==="Hotel"){
-        let stelle = f1.sceltaStelle.value; //stelle attive se hotel
+    if(struttura==="TotaleHotel"){
+        struttura = f1.sceltaStelle.value; //stelle attive se hotel
+
     }
 
     let turisti = f1.turisti.checked; //checked turisti
@@ -150,90 +155,126 @@ function grafico(f1){
             let regioni = [];
             let numStruttura = [];
 
-            if(turisti) {
-                var numTuristi = [];
-            }
+
 
 
             for (let i = 0; i < data.length; i++) {
+                if (data[i][struttura] != 0) { //NON BISGONA METTERE !== PERCHE' QUESTI ZERI DEL CSV SONO STRINGHE E NON COINCIDEREBBERO COL TIPO
+
                 let reg = data[i][regione];
                 regioni.push(reg);
 
 
                 let strut = data[i][struttura];
                 numStruttura.push(strut);
-
-                if(turisti) {
-                    let tur = data[i]["Presenze2017"];
-                    numTuristi.push(tur);
                 }
 
             }
-            console.log("R: "+regioni+" S: "+numStruttura+" T: "+numTuristi);
 
 
-             trace1 = [{
-                name: "regioni",
+            console.log("R: "+regioni+" S: "+numStruttura);
+
+
+             var trace = [{
+                name: "Strutture",
                 y: numStruttura,
                 x: regioni,
+                 text:numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
+                 textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
+                 hoverinfo:'none',//NESSUNA INFO FACENDO HOVER SU BARRA
                 orientation: "v",
                 type: "bar",
 
-                marker: {color: 'salmon'},
+                marker: {color: 'salmon', opacity:0.6},
             }];
 
-            if(turisti) {
-                trace2 = [{
-                    name: "regioni",
-                    y: numTuristi,
-                    x: regioni,
-                    orientation: "v",
-                    type: "bar",
 
-                    marker: {color: 'blue'},
-                }];
-            }
 
-            if(turisti){
-                var layout1 = {
 
-                    margin: {t: 40, l: 70, r: 30, b: 100},
-
-                    barmode: "group",
-
-                    hovermode: "y",
-
-                    legend: {
-                        y: 1.02, x: 0.5,
-                        yanchor: "bottom",
-                        xanchor: "center",
-                        orientation: "h",
-                    },
-
-                }
-            }else{
-                    var layout2 = {
+             var layout = {
 
                         margin: {t: 40, l: 70, r: 30, b: 100},
 
                         hovermode: "y",
 
-                        legend: {
+                        /*legend: {
                             y: 1.02, x: 0.5,
                             yanchor: "bottom",
                             xanchor: "center",
                             orientation: "h",
-                        },
+                        },*/
+                }
+
+
+
+        Plotly.plot("graph", trace, layout);
+
+        });
+    }
+    else{
+
+        Plotly.d3.csv("DATASET_PROVINCE_MOD.csv", function (error, data) {
+            //Creazione
+            let province = [];
+            let numStruttura = [];
+
+            console.log(regione);
+
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i]["Regione"]);
+                if(data[i]["Regione"]===regione ) {
+                    if(data[i][struttura]!=0) { //NON BISGONA METTERE !== PERCHE' QUESTI ZERI DEL CSV SONO STRINGHE E NON COINCIDEREBBERO COL TIPO
+
+                        console.log(data[i][struttura]);
+                        let prov = data[i]["Provincia"];
+                        province.push(prov);
+                        let strut = data[i][struttura];
+                        numStruttura.push(strut);
+                    }
                 }
             }
+            console.log("P: "+province+" S: "+numStruttura);
 
-            if(turisti){
-                let data = [trace1,trace2];
-                Plotly.plot("graph", data, layout1);
-            }else{
-                Plotly.plot("graph", trace1, layout2);
-            }
+
+            var trace = [{
+                name: "Strutture",
+                y: numStruttura,
+                x: province,
+                text:numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
+                textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
+                hoverinfo:'none', //NESSUNA INFO FACENDO HOVER SU BARRA
+                orientation: "v",
+                type: "bar",
+
+                marker: {color: 'salmon', opacity:0.6},
+            }];
+
+
+            var layout = {
+
+                    margin: {t: 40, l: 70, r: 30, b: 100},
+
+                    hovermode: "y",
+
+                    /*legend: {
+                        y: 1.02, x: 0.5,
+                        yanchor: "bottom",
+                        xanchor: "center",
+                        orientation: "h",
+                    },*/
+                }
+
+
+
+                Plotly.plot("graph", trace, layout);
+
         });
+
+
+
+
+
+
     }
     /*else{
 
