@@ -94,6 +94,8 @@ window.onload = function () {
             //Creazione
             let regioni = [];
             let numHotel = [];
+            let numBeb=[];
+            let numExtra=[];
 
             for (let i = 0; i < data.length; i++) {
                 let regione = data[i]["Regione"];
@@ -101,35 +103,72 @@ window.onload = function () {
 
                 let hotel = data[i]["TotaleHotel"];
                 numHotel.push(hotel);
+
+                let beb=data[i]["TotaleBeB"];
+                numBeb.push(beb);
+
+                let extra=data[i]["TotaleAltreStrutture"];
+                numExtra.push(extra);
             }
             console.log("A:" + regioni + " B:" + numHotel);
 
-            let trace = [{
-                name: "province",
+            trace1 = {
+                name: "Hotel",
                 y: numHotel,
                 x: regioni,
-                text:numHotel.map(String),
+                /*text:numHotel.map(String),
                 textposition: 'outside',
-                hoverinfo:'none',
+                */
+                hoverinfo:'x+y',
                 orientation: "v",
                 type: "bar",
 
                 marker: {color: 'salmon', opacity: 0.6},
-            }];
+            };
+        trace2 = {
+            name: "B&B",
+            y: numBeb,
+            x: regioni,
+            /*text:numBeb.map(String),
+            textposition: 'outside',*/
+            hoverinfo:'x+y',
+            orientation: "v",
+            type: "bar",
+
+            marker: {color: 'blue', opacity: 0.6},
+        };
+        trace3 = {
+            name: "Strutture Extra-Alberghiere",
+            y: numExtra,
+            x: regioni,
+            /*text:numExtra.map(String),
+            textposition: 'outside',*/
+            hoverinfo:'x+y',
+
+
+            orientation: "v",
+            type: "bar",
+
+            marker: {color: 'gree', opacity: 0.6},
+        };
             let layout = {
 
                 margin: {t: 40, l: 70, r: 30, b: 100},
 
-                hovermode: "y",
+                hovermode: "x+y",
 
                 legend: {
                     y: 1.02, x: 0.5,
                     yanchor: "bottom",
                     xanchor: "center",
                     orientation: "h",
-                }
+
+                },
+
+
             };
-            Plotly.plot("graph", trace, layout);
+            data=[trace1, trace2, trace3];
+            Plotly.plot("graph", data, layout);
         });
 
     //grafico default 2
