@@ -91,9 +91,14 @@ window.onload = function () {
 
     //grafico default 1
     Plotly.d3.csv("DATASET_REGIONI_MOD.csv", function (error, data) {
+
+        let s="TutteStrutture";
+        this.visibilityStelle(s);
             //Creazione
             let regioni = [];
             let numHotel = [];
+            let numBeb=[];
+            let numExtra=[];
 
             for (let i = 0; i < data.length; i++) {
                 let regione = data[i]["Regione"];
@@ -101,35 +106,72 @@ window.onload = function () {
 
                 let hotel = data[i]["TotaleHotel"];
                 numHotel.push(hotel);
+
+                let beb=data[i]["TotaleBeB"];
+                numBeb.push(beb);
+
+                let extra=data[i]["TotaleAltreStrutture"];
+                numExtra.push(extra);
             }
             console.log("A:" + regioni + " B:" + numHotel);
 
-            let trace = [{
-                name: "province",
+            trace1 = {
+                name: "Hotel",
                 y: numHotel,
                 x: regioni,
-                text:numHotel.map(String),
+                /*text:numHotel.map(String),
                 textposition: 'outside',
-                hoverinfo:'none',
+                */
+                hoverinfo:'x+y',
                 orientation: "v",
                 type: "bar",
 
                 marker: {color: 'salmon', opacity: 0.6},
-            }];
+            };
+        trace2 = {
+            name: "B&B",
+            y: numBeb,
+            x: regioni,
+            /*text:numBeb.map(String),
+            textposition: 'outside',*/
+            hoverinfo:'x+y',
+            orientation: "v",
+            type: "bar",
+
+            marker: {color: 'blue', opacity: 0.6},
+        };
+        trace3 = {
+            name: "Strutture Extra-Alberghiere",
+            y: numExtra,
+            x: regioni,
+            /*text:numExtra.map(String),
+            textposition: 'outside',*/
+            hoverinfo:'x+y',
+
+
+            orientation: "v",
+            type: "bar",
+
+            marker: {color: 'gree', opacity: 0.6},
+        };
             let layout = {
 
                 margin: {t: 40, l: 70, r: 30, b: 100},
 
-                hovermode: "y",
+                hovermode: "x+y",
 
                 legend: {
                     y: 1.02, x: 0.5,
                     yanchor: "bottom",
                     xanchor: "center",
                     orientation: "h",
-                }
+
+                },
+
+
             };
-            Plotly.plot("graph", trace, layout);
+            data=[trace1, trace2, trace3];
+            Plotly.plot("graph", data, layout);
         });
 
     //grafico default 2
@@ -178,134 +220,305 @@ window.onload = function () {
 };
 
 
-function grafico(f1) {
+function grafico (f1){
 
     Plotly.purge("graph");
 
     var regione = f1.sceltaLuogo.value; //italia vs regioni
     var struttura = f1.sceltaStrutture.value; //hotel beb altri
 
+    //attivo le strelle per gli hotel##########################
     if (struttura === "TotaleHotel") {
         struttura = f1.sceltaStelle.value; //stelle attive se hotel
 
     }
 
+    if(regione==="Regione"){
+        if(struttura==="TutteStrutture"){
+            //grafico con 3 trace##############################################################################
+            Plotly.d3.csv("DATASET_REGIONI_MOD.csv", function (error, data) {
+                //Creazione
+                let regioni = [];
+                let numHotel = [];
+                let numBeb = [];
+                let numExtra = [];
 
-    if (regione === "Regione") {
+                for (let i = 0; i < data.length; i++) {
+                    let regione = data[i]["Regione"];
+                    regioni.push(regione);
 
-        Plotly.d3.csv("DATASET_REGIONI_MOD.csv", function (error, data) {
-            //Creazione
-            let regioni = [];
-            let numStruttura = [];
+                    let hotel = data[i]["TotaleHotel"];
+                    numHotel.push(hotel);
 
+                    let beb = data[i]["TotaleBeB"];
+                    numBeb.push(beb);
 
-            for (let i = 0; i < data.length; i++) {
-                if (data[i][struttura] != 0) { //NON BISGONA METTERE !== PERCHE' QUESTI ZERI DEL CSV SONO STRINGHE E NON COINCIDEREBBERO COL TIPO
-
-                    let reg = data[i][regione];
-                    regioni.push(reg);
-
-
-                    let strut = data[i][struttura];
-                    numStruttura.push(strut);
+                    let extra = data[i]["TotaleAltreStrutture"];
+                    numExtra.push(extra);
                 }
+                console.log("A:" + regioni + " B:" + numHotel);
 
-            }
+                trace1 = {
+                    name: "Hotel",
+                    y: numHotel,
+                    x: regioni,
+                    /*text:numHotel.map(String),
+                    textposition: 'outside',
+                    */
+                    hoverinfo: 'x+y',
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'salmon', opacity: 0.6},
+                };
+                trace2 = {
+                    name: "B&B",
+                    y: numBeb,
+                    x: regioni,
+                    /*text:numBeb.map(String),
+                    textposition: 'outside',*/
+                    hoverinfo: 'x+y',
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'blue', opacity: 0.6},
+                };
+                trace3 = {
+                    name: "Strutture Extra-Alberghiere",
+                    y: numExtra,
+                    x: regioni,
+                    /*text:numExtra.map(String),
+                    textposition: 'outside',*/
+                    hoverinfo: 'x+y',
 
 
-            console.log("R: " + regioni + " S: " + numStruttura);
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'gree', opacity: 0.6},
+                };
+                let layout = {
+
+                    margin: {t: 40, l: 70, r: 30, b: 100},
+
+                    hovermode: "x+y",
+
+                    legend: {
+                        y: 1.02, x: 0.5,
+                        yanchor: "bottom",
+                        xanchor: "center",
+                        orientation: "h",
+
+                    },
 
 
-            var trace = [{
-                name: "Strutture",
-                y: numStruttura,
-                x: regioni,
-                text: numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
-                textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
-                hoverinfo: 'none',//NESSUNA INFO FACENDO HOVER SU BARRA
-                orientation: "v",
-                type: "bar",
-
-                marker: {color: 'salmon', opacity: 0.6},
-            }];
+                };
+                data = [trace1, trace2, trace3];
+                Plotly.plot("graph", data, layout);
+            });
+        }else{
+            //grafico per italia con hotel, b&b o altro####################################################################
+            Plotly.d3.csv("DATASET_REGIONI_MOD.csv", function (error, data) {
+                //Creazione
+                let regioni = [];
+                let numStruttura = [];
 
 
-            var layout = {
-
-                margin: {t: 40, l: 70, r: 30, b: 100},
-
-                hovermode: "y",
-
-                /*legend: {
-                    y: 1.02, x: 0.5,
-                    yanchor: "bottom",
-                    xanchor: "center",
-                    orientation: "h",
-                },*/
-            }
-
-
-            Plotly.plot("graph", trace, layout);
-
-        });
-    } else {
-
-        Plotly.d3.csv("DATASET_PROVINCE_MOD.csv", function (error, data) {
-            //Creazione
-            let province = [];
-            let numStruttura = [];
-
-            console.log(regione);
-
-            for (let i = 0; i < data.length; i++) {
-                console.log(data[i]["Regione"]);
-                if (data[i]["Regione"] === regione) {
+                for (let i = 0; i < data.length; i++) {
                     if (data[i][struttura] != 0) { //NON BISGONA METTERE !== PERCHE' QUESTI ZERI DEL CSV SONO STRINGHE E NON COINCIDEREBBERO COL TIPO
 
-                        console.log(data[i][struttura]);
-                        let prov = data[i]["Provincia"];
-                        province.push(prov);
+                        let reg = data[i][regione];
+                        regioni.push(reg);
+
+
                         let strut = data[i][struttura];
                         numStruttura.push(strut);
                     }
+
                 }
-            }
-            console.log("P: " + province + " S: " + numStruttura);
 
 
-            var trace = [{
-                name: "Strutture",
-                y: numStruttura,
-                x: province,
-                text: numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
-                textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
-                hoverinfo: 'none', //NESSUNA INFO FACENDO HOVER SU BARRA
-                orientation: "v",
-                type: "bar",
-
-                marker: {color: 'salmon', opacity: 0.6},
-            }];
+                console.log("R: " + regioni + " S: " + numStruttura);
 
 
-            var layout = {
+                var trace = [{
+                    name: "Strutture",
+                    y: numStruttura,
+                    x: regioni,
+                    text: numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
+                    textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
+                    hoverinfo: 'none',//NESSUNA INFO FACENDO HOVER SU BARRA
+                    orientation: "v",
+                    type: "bar",
 
-                margin: {t: 40, l: 70, r: 30, b: 100},
-
-                hovermode: "y",
-
-                /*legend: {
-                    y: 1.02, x: 0.5,
-                    yanchor: "bottom",
-                    xanchor: "center",
-                    orientation: "h",
-                },*/
-            }
+                    marker: {color: 'salmon', opacity: 0.6},
+                }];
 
 
-            Plotly.plot("graph", trace, layout);
+                var layout = {
 
-        });
+                    margin: {t: 40, l: 70, r: 30, b: 100},
 
+                    hovermode: "y",
+
+                    /*legend: {
+                        y: 1.02, x: 0.5,
+                        yanchor: "bottom",
+                        xanchor: "center",
+                        orientation: "h",
+                    },*/
+                }
+
+
+                Plotly.plot("graph", trace, layout);
+
+            });
+        }
+    }else{
+        if(struttura==="TutteStrutture"){
+            //grafico per province con 3 trace############################################
+            Plotly.d3.csv("DATASET_PROVINCE_MOD.csv", function (error, data) {
+                //Creazione
+                let province = [];
+                let numHotel = [];
+                let numBeb = [];
+                let numExtra = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    if(data[i]["Regione"]==regione) {
+                        if (data[i]["TotaleHotel"] != 0 && data[i]["TotaleBeB"] != 0 && data[i]["TotaleAltreStrutture"] != 0) {
+                            let provincia = data[i]["Provincia"];
+                            province.push(provincia);
+
+                            let hotel = data[i]["TotaleHotel"];
+                            numHotel.push(hotel);
+
+                            let beb = data[i]["TotaleBeB"];
+                            numBeb.push(beb);
+
+                            let extra = data[i]["TotaleAltreStrutture"];
+                            numExtra.push(extra);
+                        }
+                    }
+                }
+
+
+                trace1 = {
+                    name: "Hotel",
+                    y: numHotel,
+                    x: province,
+                    /*text:numHotel.map(String),
+                    textposition: 'outside',
+                    */
+                    hoverinfo: 'x+y',
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'salmon', opacity: 0.6},
+                };
+                trace2 = {
+                    name: "B&B",
+                    y: numBeb,
+                    x: province,
+                    /*text:numBeb.map(String),
+                    textposition: 'outside',*/
+                    hoverinfo: 'x+y',
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'blue', opacity: 0.6},
+                };
+                trace3 = {
+                    name: "Strutture Extra-Alberghiere",
+                    y: numExtra,
+                    x: province,
+                    /*text:numExtra.map(String),
+                    textposition: 'outside',*/
+                    hoverinfo: 'x+y',
+
+
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'green', opacity: 0.6},
+                };
+                let layout = {
+
+                    margin: {t: 40, l: 70, r: 30, b: 100},
+
+                    hovermode: "x+y",
+
+                    legend: {
+                        y: 1.02, x: 0.5,
+                        yanchor: "bottom",
+                        xanchor: "center",
+                        orientation: "v",
+
+                    },
+
+
+                };
+                data = [trace1, trace2, trace3];
+                Plotly.plot("graph", data, layout);
+            });
+        }else{
+            //grafico per province con hotel, b&b o altro##########################################
+            Plotly.d3.csv("DATASET_PROVINCE_MOD.csv", function (error, data) {
+                //Creazione
+                let province = [];
+                let numStruttura = [];
+
+                console.log(regione);
+
+                for (let i = 0; i < data.length; i++) {
+                    console.log(data[i]["Regione"]);
+                    if (data[i]["Regione"] === regione) {
+                        if (data[i][struttura] != 0) { //NON BISGONA METTERE !== PERCHE' QUESTI ZERI DEL CSV SONO STRINGHE E NON COINCIDEREBBERO COL TIPO
+
+                            console.log(data[i][struttura]);
+                            let prov = data[i]["Provincia"];
+                            province.push(prov);
+                            let strut = data[i][struttura];
+                            numStruttura.push(strut);
+                        }
+                    }
+                }
+                console.log("P: " + province + " S: " + numStruttura);
+
+
+                var trace = [{
+                    name: "Strutture",
+                    y: numStruttura,
+                    x: province,
+                    text: numStruttura.map(String),//NUMERO CORRISPONDENTE A BARRA
+                    textposition: 'outside', //ETICHETTA NUMERO SOPRA BARRA
+                    hoverinfo: 'none', //NESSUNA INFO FACENDO HOVER SU BARRA
+                    orientation: "v",
+                    type: "bar",
+
+                    marker: {color: 'salmon', opacity: 0.6},
+                }];
+
+
+                var layout = {
+
+                    margin: {t: 40, l: 70, r: 30, b: 100},
+
+                    hovermode: "y",
+
+                    /*legend: {
+                        y: 1.02, x: 0.5,
+                        yanchor: "bottom",
+                        xanchor: "center",
+                        orientation: "h",
+                    },*/
+                }
+
+
+                Plotly.plot("graph", trace, layout);
+
+            });
+        }
     }
 }
 
