@@ -217,6 +217,136 @@ window.onload = function () {
         Plotly.plot("graphTuristi", trace, layout);
     });
 
+        Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
+            //Creazione
+            let regioni = [];
+            let numPresenze = [];
+            let latitude =[];
+            let longitude=[];
+
+            for (let i = 0; i < data.length; i++) {
+                let regione = data[i]["Regione"];
+                regioni.push(regione);
+
+                let presenze = data[i]["Presenze2017"];
+                numPresenze.push(presenze);
+
+                let lat =data[i]["Latitude"];
+                latitude.push(lat);
+
+                let lon =data[i]["Longitude"];
+                latitude.push(lon);
+
+            }
+            console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude);
+
+            let trace = [{
+            type: 'scattergeo',
+            mode: 'markers+text',
+
+            text: regioni,
+            lon: longitude,
+            lat:latitude,
+            marker: {
+                size: regioni.length,
+                color: [
+                    '#bebada', '#fdb462', '#fb8072', '#d9d9d9', '#bc80bd',
+                    '#b3de69', '#8dd3c7', '#80b1d3', '#fccde5', '#ffffb3'
+                ],
+                line: {
+                    width: 1
+                }
+            },
+            name: 'Turisti Regioni',
+            textposition: [
+                'top right', 'top left', 'top center', 'bottom right', 'top right',
+                'top left', 'bottom right', 'bottom left', 'top right', 'top right'
+            ],
+        }];
+    //GRAFICO DEFAULT 3 prova 2
+        var layout = {
+            title: 'PRESENZE ITALIANE',
+            font: {
+                family: 'Droid Serif, serif',
+                size: 6
+            },
+            titlefont: {
+                size: 16
+            },
+            geo: {
+                scope: 'europe',
+                resolution: 50,
+                lonaxis: {
+                    'range': [39, 43] //italiane
+                },
+                lataxis: {
+                    'range': [8, 15] //italiane
+                },
+                showrivers: true,
+                rivercolor: '#fff',
+                showlakes: true,
+                lakecolor: '#fff',
+                showland: true,
+                landcolor: '#EAEAAE',
+                countrycolor: '#d3d3d3',
+                countrywidth: 1.5,
+                subunitcolor: '#d3d3d3'
+            }
+        };
+
+        Plotly.newPlot("graphMappa", trace, layout);
+    });
+    //grafico default 3 mappe
+    Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
+        //Creazione
+        let regioni = [];
+        let numPresenze = [];
+        let latitude =[];
+        let longitude=[];
+
+        for (let i = 0; i < data.length; i++) {
+            let regione = data[i]["Regione"];
+            regioni.push(regione);
+
+            let presenze = data[i]["Presenze2017"];
+            numPresenze.push(presenze);
+
+            let lat =data[i]["Latitude"];
+            latitude.push(lat);
+
+            let lon =data[i]["Longitude"];
+            latitude.push(lon);
+
+        }
+      //  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:" + numPresenze);
+
+        let trace = [{
+            type: 'scattergeo',
+            location: 'ITA',
+            lat: latitude,
+            lon: longitude,
+            hoverinfo: 'text',
+            text: regioni,
+            marker: {
+                size: numPresenze,
+                line: {
+                    color: 'black',
+                    width: 2
+                },
+            }
+        }];
+        let layout = {
+            title: 'Presenze 2017 italia',
+            geo: {
+                scope: 'europe',
+               resolution: 10,
+
+            },
+        };
+       // Plotly.plot("graphMappa", trace, layout); CAMBIO E PROVO CON QUELLO SOPRA
+    });
+
+
 };
 
 
@@ -631,6 +761,8 @@ function grafico (f1){
         }
 
 }
+
+
 
 
 
