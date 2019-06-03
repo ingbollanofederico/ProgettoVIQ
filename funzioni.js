@@ -265,7 +265,7 @@ window.onload = function () {
             longitude.push(lon);
 
         }
-    //  debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:" + numPresenze);
+    //  debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:"hj + numPresenze);
 
         let trace = [{
             type: 'scattergeo',
