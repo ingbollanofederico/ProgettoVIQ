@@ -202,7 +202,27 @@ window.onload = function () {
             marker: {color: 'blue', opacity: 0.6},
         }];
         let layout = {
-
+            updatemenus: [{
+                y: 0.8,
+                yanchor: 'top',
+                buttons: [{
+                    method: 'restyle',
+                    args: ['marker.color', 'red'],
+                    label: 'rosso'
+                }, {
+                    method: 'restyle',
+                    args: ['marker.color', 'blue'],
+                    label: 'blu'
+                }, {
+                    method: 'restyle',
+                    args: ['marker.color', 'Cividis'],
+                    label: 'giallo'
+                },{
+                    method: 'restyle',
+                    args: ['marker.color', 'green'],
+                    label: 'verde'
+                }]
+            }],
             margin: {t: 40, l: 70, r: 30, b: 100},
 
             hovermode: "y",
@@ -214,136 +234,98 @@ window.onload = function () {
                 orientation: "h",
             }
         };
-        Plotly.plot("graphTuristi", trace, layout);
+        Plotly.plot("graphTuristi", trace,layout)
+
     });
+    //GRAFICO mappa prova 1
 
-        Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
-            //Creazione
-            let regioni = [];
-            let numPresenze = [];
-            let latitude =[];
-            let longitude=[];
-
-            for (let i = 0; i < data.length; i++) {
-                let regione = data[i]["Regione"];
-                regioni.push(regione);
-
-                let presenze = data[i]["Presenze2017"];
-                numPresenze.push(presenze);
-
-                let lat =data[i]["Latitude"];
-                latitude.push(lat);
-
-                let lon =data[i]["Longitude"];
-                latitude.push(lon);
-
-            }
-            console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude);
-
-            let trace = [{
-            type: 'scattergeo',
-            mode: 'markers+text',
-
-            text: regioni,
-            lon: longitude,
-            lat:latitude,
-            marker: {
-                size: regioni.length,
-                color: [
-                    '#bebada', '#fdb462', '#fb8072', '#d9d9d9', '#bc80bd',
-                    '#b3de69', '#8dd3c7', '#80b1d3', '#fccde5', '#ffffb3'
-                ],
-                line: {
-                    width: 1
-                }
-            },
-            name: 'Turisti Regioni',
-            textposition: [
-                'top right', 'top left', 'top center', 'bottom right', 'top right',
-                'top left', 'bottom right', 'bottom left', 'top right', 'top right'
-            ],
-        }];
-    //GRAFICO DEFAULT 3 prova 2
-        var layout = {
-            title: 'PRESENZE ITALIANE',
-            font: {
-                family: 'Droid Serif, serif',
-                size: 6
-            },
-            titlefont: {
-                size: 16
-            },
-            geo: {
-                scope: 'europe',
-                resolution: 50,
-                lonaxis: {
-                    'range': [39, 43] //italiane
-                },
-                lataxis: {
-                    'range': [8, 15] //italiane
-                },
-                showrivers: true,
-                rivercolor: '#fff',
-                showlakes: true,
-                lakecolor: '#fff',
-                showland: true,
-                landcolor: '#EAEAAE',
-                countrycolor: '#d3d3d3',
-                countrywidth: 1.5,
-                subunitcolor: '#d3d3d3'
-            }
-        };
-
-        Plotly.newPlot("graphMappa", trace, layout);
-    });
-    //grafico default 3 mappe
     Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
         //Creazione
-        let regioni = [];
-        let numPresenze = [];
-        let latitude =[];
-        let longitude=[];
+        var regioni = [];
+        var numPresenze = [];
+        var latitude =[];
+        var longitude=[];
+        var hovertext=[];
 
         for (let i = 0; i < data.length; i++) {
             let regione = data[i]["Regione"];
             regioni.push(regione);
 
-            let presenze = data[i]["Presenze2017"];
-            numPresenze.push(presenze);
+            let presenze = data[i]["FlussiPresenze2017"];
+            pres=presenze/100000;
+            numPresenze.push(pres);
+
+            let txt=regione+"<br>Turisti: "+presenze;
+            hovertext.push(txt);
 
             let lat =data[i]["Latitude"];
             latitude.push(lat);
 
             let lon =data[i]["Longitude"];
-            latitude.push(lon);
+            longitude.push(lon);
 
         }
-      //  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:" + numPresenze);
+    //  debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:" + numPresenze);
 
         let trace = [{
             type: 'scattergeo',
-            location: 'ITA',
-            lat: latitude,
-            lon: longitude,
+            mode: 'markers+text',
             hoverinfo: 'text',
-            text: regioni,
+            hovertext: hovertext,
+            lon: longitude,
+            lat: latitude,
+
+            //text: regioni,
             marker: {
                 size: numPresenze,
+                sizemode: 'area',
+                sizemin: 0,
+                sizeref: 1,
+                color: numPresenze,
+                cmin: 0,
+                cmax: 100,
+                colorscale: 'Cividis',
+
                 line: {
-                    color: 'black',
-                    width: 2
-                },
-            }
+                    color: 'black'
+               },
+            },
+            name: 'Citta italiane'
         }];
         let layout = {
+            margin: {t: 40, l: 70, r: 30, b: 100},
+
             title: 'Presenze 2017 italia',
             geo: {
                 scope: 'europe',
-               resolution: 10,
-
             },
+
+            updatemenus: [{
+                y: 0.8,
+                yanchor: 'top',
+                buttons: [{
+                    method: 'restyle',
+                    args: ['marker.colorscale', 'Bluered'],
+                    label: 'rosso'
+                }, {
+                    method: 'restyle',
+                    args: ['marker.colorscale', 'Blues'],
+                    label: 'blu'
+                },{
+                    method: 'restyle',
+                    args: ['marker.colorscale', 'Cividis'],
+                    label: 'giallo'
+                }, {
+                    method: 'restyle',
+                    args: ['marker.colorscale', 'Greens'],
+                    label: 'verde'
+                }]
+            }]
+
+
         };
-       // Plotly.plot("graphMappa", trace, layout); CAMBIO E PROVO CON QUELLO SOPRA
+
+        Plotly.plot("graphMappa", trace, layout);
     });
 
 
@@ -428,7 +410,27 @@ function grafico (f1){
                     marker: {color: 'gree', opacity: 0.6},
                 };
                 let layout = {
-
+                    updatemenus: [{
+                        y: 0.8,
+                        yanchor: 'top',
+                        buttons: [{
+                            method: 'restyle',
+                            args: ['marker.color', 'red'],
+                            label: 'rosso'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'blue'],
+                            label: 'blu'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'Cividis'],
+                            label: 'giallo'
+                        },{
+                            method: 'restyle',
+                            args: ['marker.color', 'green'],
+                            label: 'verde'
+                        }]
+                    }],
                     margin: {t: 40, l: 70, r: 30, b: 100},
 
                     hovermode: "x+y",
@@ -486,6 +488,27 @@ function grafico (f1){
 
 
                 var layout = {
+                    updatemenus: [{
+                        y: 0.8,
+                        yanchor: 'top',
+                        buttons: [{
+                            method: 'restyle',
+                            args: ['marker.color', 'red'],
+                            label: 'rosso'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'blue'],
+                            label: 'blu'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'Cividis'],
+                            label: 'giallo'
+                        },{
+                            method: 'restyle',
+                            args: ['marker.color', 'green'],
+                            label: 'verde'
+                        }]
+                    }],
 
                     margin: {t: 40, l: 70, r: 30, b: 100},
 
@@ -573,6 +596,27 @@ function grafico (f1){
                     marker: {color: 'green', opacity: 0.6},
                 };
                 let layout = {
+                    updatemenus: [{
+                        y: 0.8,
+                        yanchor: 'top',
+                        buttons: [{
+                            method: 'restyle',
+                            args: ['marker.color', 'red'],
+                            label: 'rosso'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'blue'],
+                            label: 'blu'
+                        }, {
+                            method: 'restyle',
+                            args: ['marker.color', 'Cividis'],
+                            label: 'giallo'
+                        },{
+                            method: 'restyle',
+                            args: ['marker.color', 'green'],
+                            label: 'verde'
+                        }]
+                    }],
 
                     margin: {t: 40, l: 70, r: 30, b: 100},
 

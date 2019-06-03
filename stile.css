@@ -37,6 +37,10 @@ ul.menu {
 
 
 }
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
 
 li.menu  {
     padding: 0.5em 0 0.5em 0.5em;
