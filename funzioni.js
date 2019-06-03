@@ -171,6 +171,7 @@ window.onload = function () {
 
             };
             data=[trace1, trace2, trace3];
+
             Plotly.plot("graph", data, layout);
         });
 

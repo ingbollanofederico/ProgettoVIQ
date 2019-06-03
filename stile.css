@@ -11,7 +11,7 @@ body {
     margin-left:0.1em;
     margin-right:0.1em;
     margin-bottom:0.1em;
-    border: 0.1em solid maroon;
+    border: 0.02em solid maroon;
     text-align: center;
     line-height: 2;
     font-size: 200%;
@@ -46,6 +46,7 @@ li.menu  {
     padding: 0.5em 0 0.5em 0.5em;
     margin-bottom: 0.3em;
     background-color: rgba(150, 0, 0, .6);
+    border: 0.05em solid maroon;
     -webkit-border-radius: 0.1em;
     -moz-border-radius: 0.1em;
     border-radius: 0.5em;
@@ -61,10 +62,10 @@ li.menu  {
     margin-top: 1em;
     margin-bottom:1em;
     background-color: azure;
-    border-left: 0.1em solid maroon;
-    border-right: 0.1em solid maroon;
-    border-top: 0.1em solid maroon;
-    border-bottom: 0.1em solid maroon;
+    border-left: 0.05em solid maroon;
+    border-right: 0.05em solid maroon;
+    border-top: 0.05em solid maroon;
+    border-bottom: 0.05em solid maroon;
     padding-left: 0.5em;
     padding-right: 0.5em;
 
@@ -82,7 +83,7 @@ li.menu  {
     margin-left:0.1em;
     margin-right:0.1em;
     margin-bottom:0.1em;
-    border: 0.1em solid maroon;
+    border: 0.05em solid maroon;
     text-align: center;
     line-height: 2;
     font-size: 150%;
@@ -100,7 +101,7 @@ li.menu  {
 }
 
 .sezione{
-    border-bottom: 0.1em solid maroon;
+    border-bottom: 0.05em solid maroon;
 
 }
 
@@ -132,12 +133,12 @@ table {
 
 
 table tr:nth-child(2n+1) {
-    background-color: rgb(230, 230, 230);
+    background-color: rgba(255, 0, 0, .2);
 }
 
 table tr:first-child {
     border-bottom: 1pt solid black;
-    background-color: snow;
+    background-color: rgba(255,0,0,0.4);
 }
 
 
