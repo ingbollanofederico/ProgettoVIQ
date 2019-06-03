@@ -23,10 +23,12 @@ body {
 }
 
 #menu{
-    float: left;
-    width: 8%;
-    position: fixed;
-    margin-left: 0.5%;
+    clear:both;
+    margin-top: 0.1em;
+    margin-left:0.1em;
+    margin-right:0.1em;
+    margin-bottom:0.1em;
+
     margin-top: 1em;
 
 }
@@ -35,32 +37,40 @@ ul.menu {
     padding:0;
     margin: 0;
 
+    background-color: rgba(150,0,0,1);
+
 
 }
-.active {
-    background-color: #4CAF50;
-    color: white;
-}
+
 
 li.menu  {
     padding: 0.5em 0 0.5em 0.5em;
     margin-bottom: 0.3em;
-    background-color: rgba(150, 0, 0, .6);
     border: 0.05em solid maroon;
+    border-collapse: collapse;
     -webkit-border-radius: 0.1em;
     -moz-border-radius: 0.1em;
     border-radius: 0.5em;
+    float: left;
+    clear:none;
+     width: 19%;
+    background-color: rgba(150,0,0,1);
+    text-align: center;
 
 }
 .menu li:hover {
-    background-color: rgba(150,0,0,1);
+    color:rgba(150,0,0,1);
+    background-color: azure;
+
 }
 
 #content{
-    float: left;
-    margin-left: 9%;
-    margin-top: 1em;
-    margin-bottom:1em;
+    clear:both;
+
+    margin-top: 0.1em;
+    margin-left:0.1em;
+    margin-right:0.1em;
+    margin-bottom:0.1em;
     background-color: azure;
     border-left: 0.05em solid maroon;
     border-right: 0.05em solid maroon;
@@ -69,7 +79,7 @@ li.menu  {
     padding-left: 0.5em;
     padding-right: 0.5em;
 
-    width:89.5%;
+
     min-width: 20%;
     -webkit-border-radius: 0.1em;
     -moz-border-radius: 0.1em;
@@ -102,10 +112,11 @@ li.menu  {
 
 .sezione{
     border-bottom: 0.05em solid maroon;
+    border-collapse: collapse;
 
 }
 
-a.descrizione, a.tabelle, a.grafici, a.analisi, a.commento{
+a.active, a.commento{
     text-decoration: none;
     color: azure;
 }
@@ -201,9 +212,19 @@ tr:hover em { /* visualizzato on-hover */
 
 }
 
-
-
-
+#home{
+    padding: 0.5em 0 0.5em 0.5em;
+    margin-bottom: 0.3em;
+    border: 0.05em solid maroon;
+    border-collapse: collapse;
+    -webkit-border-radius: 0.1em;
+    -moz-border-radius: 0.1em;
+    border-radius: 0.5em;
+    float: left;
+    clear:right;
+    width: 12%;
+    background-color: rgba(150,0,0,1);
+}
 
 
 
