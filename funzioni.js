@@ -1,18 +1,52 @@
 
-function colorLink(x){
+function colorLink(x,y){
     let element=document.getElementById(x);
     element.style.color="rgba(150,0,0,1)";
 
+    let contenitore=document.getElementById(y);
+    contenitore.style.backgroundColor="azure";
+
 
 }
 
-function decolorLink(x){
+function decolorLink(x, y){
     let element=document.getElementById(x);
     element.style.color="azure";
 
+    let contenitore=document.getElementById(y);
+    contenitore.style.backgroundColor="rgba(150,0,0,1)";
 
 }
 
+function coloraMenu(x){
+    let element=document.getElementById(x);
+    element.style.backgroundColor="azure";
+    if(x==='primo')
+        colorLink('descr');
+    if(x==='secondo')
+        colorLink('tabelleLink');
+    if(x==='terzo')
+        colorLink('graficiLink');
+    if(x==='quarto')
+        colorLink('analysis');
+    if(x==='quinto')
+        colorLink('comm');
+}
+
+function decoloraMenu(x){
+    let element=document.getElementById(x);
+    element.style.backgroundColor="rgba(150,0,0,1)";
+    if(x==='primo')
+        decolorLink('descr');
+    if(x==='secondo')
+        decolorLink('tabelleLink');
+    if(x==='terzo')
+        decolorLink('graficiLink');
+    if(x==='quarto')
+        decolorLink('analysis');
+    if(x==='quinto')
+        decolorLink('comm');
+}
 
 
 
