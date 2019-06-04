@@ -777,10 +777,12 @@ function graficoMappa(f1) {
 
     var struttura = f1.sceltaStrutture2.value; //hotel beb altri
 
+    var scalaHotel =false;
+
     //attivo le strelle per gli hotel##########################
     if (struttura === "TotaleHotel") {
         struttura = f1.sceltaStelle2.value; //stelle attive se hotel
-
+        scalaHotel=true;
     }
 
 
@@ -800,14 +802,16 @@ function graficoMappa(f1) {
 
                 var presenze;
 
-                if(struttura === "FlussiPresenze2017") {
+                if(struttura === "Presenze2017") {
                     var presenze = data[i][struttura];
                     pres = presenze / 100000;
                     numPresenze.push(pres);
                 }else{
-                    var presenze = data[i][struttura];
-                    pres = presenze / 100;
-                    numPresenze.push(pres);
+
+                        var presenze = data[i][struttura];
+                        pres = presenze / 100;
+                        numPresenze.push(pres);
+
                 }
 
                 let txt=reg+"<br>"+struttura+": "+presenze;
@@ -910,15 +914,19 @@ function graficoMappa(f1) {
                     let pro = data[i]["Provincia"];
                     prov.push(pro);
 
-                    if(struttura === "FlussiPresenze2017") {
+
+                    if(struttura === "Presenze2017") {
                         var presenze = data[i][struttura];
-                        pres = presenze / 100000;
+                        pres = presenze / 10000;
                         numPres.push(pres);
                     }else{
+
                         var presenze = data[i][struttura];
-                        pres = presenze / 100;
+                        pres = presenze / 10;
                         numPres.push(pres);
+
                     }
+
 
                     let txt = pro + "<br>Turisti: " + presenze;
                     hovertext.push(txt);
