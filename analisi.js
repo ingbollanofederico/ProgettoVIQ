@@ -1,4 +1,3 @@
-
 function colorLink(x,y){
     let element=document.getElementById(x);
     element.style.color="rgba(150,0,0,1)";
@@ -17,10 +16,3 @@ function decolorLink(x, y){
     contenitore.style.backgroundColor="rgba(150,0,0,1)";
 
 }
-
-
-
-
-
-
-
