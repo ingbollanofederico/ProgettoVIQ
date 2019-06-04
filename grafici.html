@@ -5,7 +5,7 @@
     <title>Grafici</title>
 
     <link rel="stylesheet" type="text/css" href="stile.css">
-    <script src="funzioni.js"></script>
+    <script src="grafici.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
@@ -13,10 +13,14 @@
 <body>
 
 <div id="header"> Grafici</div>
-<div id="home">
-    <span class="home">
-        <a href="tesina.html" class="active">Torna alla Home</a>
-    </span>
+<div id="menu" >
+    <ul class="menu">
+        <li class="menu" id="primo" onmouseleave="decolorLink('descr', 'primo')" onmouseover="colorLink('descr','primo')"><a href="tesina.html" class="active" id="descr">Home</a></li>
+        <li class="menu" id="secondo" onmouseleave="decolorLink('tabelleLink', 'secondo')" onmouseover="colorLink('tabelleLink', 'secondo')"><a href="tabelle.html" class="active" id="tabelleLink">Tabelle</a></li>
+        <li class="menu" id="dentroContenitore"><a id="dentroScritta">Grafici</a></li>
+        <li class="menu" id="quarto" onmouseleave="decolorLink('analysis','quarto')" onmouseover="colorLink('analysis','quarto')"><a href="analisi.html" class="active" id="analysis">Analisi</a></li>
+    </ul>
+
 </div>
 
 <div id="content">
@@ -51,13 +55,13 @@
                 <option name="r19" value="VALLE-D'AOSTA">Valle D'Aosta</option>
                 <option name="r20" value="VENETO">Veneto</option>
             </select>
-            <select name="sceltaStrutture" class="tendinastrutture" onchange="visibilityStelle(this.value,f)">
+            <select name="sceltaStrutture1" class="tendinastrutture" onchange="visibilityStelle(this.value, 'sceltaStrutture1')">
                 <option name="TutteLeStrutture" value="TutteStrutture" selected>Tutte le strutture</option>
                 <option name="TotaleHotel" value="TotaleHotel" >Hotel</option>
                 <option name="TotaleBeB" value="TotaleBeB">B&B</option>
                 <option name="TotaleAltreStrutture" value="TotaleAltreStrutture">ExtraAlberghiere</option>
             </select>
-            <select name="sceltaStelle" class="tendinastelle">
+            <select name="sceltaStelle1" class="tendinastelle">
                 <option name="TotaleHotel" value="TotaleHotel" selected>Tutte</option>
                 <option name="Hotel5Stelle" value="Hotel5Stelle">5 Stelle</option>
                 <option name="Hotel4Stelle" value="Hotel4Stelle">4 Stelle</option>
@@ -133,13 +137,13 @@
                 <option name="r19" value="VALLE-D'AOSTA">Valle D'Aosta</option>
                 <option name="r20" value="VENETO">Veneto</option>
             </select>
-            <select name="sceltaStrutture" class="tendinastrutture" onchange="visibilityStelle(this.value,f3)">
+            <select name="sceltaStrutture2" class="tendinastrutture" onchange="visibilityStelle(this.value, 'sceltaStrutture2')">
                 <option name="Turisti" value="Presenze2017" selected>Flussi Turistici</option>
                 <option name="TotaleHotel" value="TotaleHotel" >Hotel</option>
                 <option name="TotaleBeB" value="TotaleBeB">B&B</option>
                 <option name="TotaleAltreStrutture" value="TotaleAltreStrutture">ExtraAlberghiere</option>
             </select>
-            <select name="sceltaStelle" class="tendinastelle">
+            <select name="sceltaStelle2" class="tendinastelle">
                 <option name="TotaleHotel" value="TotaleHotel" selected>Tutte</option>
                 <option name="Hotel5Stelle" value="Hotel5Stelle">5 Stelle</option>
                 <option name="Hotel4Stelle" value="Hotel4Stelle">4 Stelle</option>

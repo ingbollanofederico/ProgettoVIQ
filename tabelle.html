@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <title>Tabelle</title>
     <link rel="stylesheet" type="text/css" href="stile.css">
-    <script src="funzioni.js"></script>
+    <script src="tabelle.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
 
 <div id="header">Tabelle </div>
-<div id="home">
-    <span class="home">
-        <a href="tesina.html" class="active">Torna alla Home</a>
-    </span>
+<div id="menu" >
+    <ul class="menu">
+        <li class="menu" id="primo" onmouseleave="decolorLink('descr', 'primo')" onmouseover="colorLink('descr','primo')"><a href="tesina.html" class="active" id="descr">Home</a></li>
+        <li class="menu" id="dentroContenitore"><a id="dentroScritta">Tabelle</a></li>
+        <li class="menu" id="terzo" onmouseleave="decolorLink('graficiLink', 'terzo')" onmouseover="colorLink('graficiLink','terzo')"><a href="grafici.html" class="active" id="graficiLink">Grafici</a></li>
+        <li class="menu" id="quarto" onmouseleave="decolorLink('analysis','quarto')" onmouseover="colorLink('analysis','quarto')"><a href="analisi.html" class="active" id="analysis">Analisi</a></li>
+    </ul>
+
 </div>
 <div id="content">
 <section  class="sezione" id="tabelle" >

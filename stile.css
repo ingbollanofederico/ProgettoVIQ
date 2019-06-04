@@ -52,7 +52,7 @@ li.menu  {
     border-radius: 0.5em;
     float: left;
     clear:none;
-     width: 19%;
+     width: 24%;
     background-color: rgba(150,0,0,1);
     text-align: center;
 
@@ -211,18 +211,12 @@ tr:hover em { /* visualizzato on-hover */
 
 }
 
-#home{
-    padding: 0.5em 0 0.5em 0.5em;
-    margin-bottom: 0.3em;
-    border: 0.05em solid maroon;
-    border-collapse: collapse;
-    -webkit-border-radius: 0.1em;
-    -moz-border-radius: 0.1em;
-    border-radius: 0.5em;
-    float: left;
-    clear:right;
-    width: 12%;
-    background-color: rgba(150,0,0,1);
+#dentroContenitore{
+    background-color: azure;
+}
+
+#dentroScritta{
+    color: rgba(150,0,0,1);
 }
 
 
