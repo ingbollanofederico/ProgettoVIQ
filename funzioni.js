@@ -50,14 +50,14 @@ function decoloraMenu(x){
 
 
 
-function visibilityStelle(x,){
+function visibilityStelle(x,k){
 
     if(x!="TotaleHotel")
 
-       document.f.sceltaStelle.style.visibility="hidden";
+       k.sceltaStelle.style.visibility="hidden";
 
     else
-        document.f.sceltaStelle.style.visibility="visible";
+        k.sceltaStelle.style.visibility="visible";
 }
 
 function loadASync(url, success) {
