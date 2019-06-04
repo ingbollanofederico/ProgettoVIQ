@@ -191,6 +191,7 @@ window.onload = function () {
 
     Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
         //Creazione
+        visibilityStelle("FlussiTuristici", "sceltaStrutture2");
         var regioni = [];
         var numPresenze = [];
         var latitude =[];
