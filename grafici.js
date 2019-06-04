@@ -202,7 +202,7 @@ window.onload = function () {
             let regione = data[i]["Regione"];
             regioni.push(regione);
 
-            let presenze = data[i]["FlussiPresenze2017"];
+            let presenze = data[i]["Presenze2017"];
             pres=presenze/100000;
             numPresenze.push(pres);
 
@@ -910,11 +910,11 @@ function graficoMappa(f1) {
                     let pro = data[i]["Provincia"];
                     prov.push(pro);
 
-                    if (struttura === "FlussiPresenze2017") {
+                    if(struttura === "FlussiPresenze2017") {
                         var presenze = data[i][struttura];
                         pres = presenze / 100000;
                         numPres.push(pres);
-                    } else {
+                    }else{
                         var presenze = data[i][struttura];
                         pres = presenze / 100;
                         numPres.push(pres);
