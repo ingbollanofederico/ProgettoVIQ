@@ -403,7 +403,7 @@ window.onload = function () {
             longitude.push(lon);
 
         }
-    //  debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:"hj + numPresenze);
+      debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:"+ numPresenze);
 
         let trace = [{
             type: 'scattergeo',

@@ -18,11 +18,14 @@
         <a href="tesina.html" class="active">Torna alla Home</a>
     </span>
 </div>
+
 <div id="content">
-<section  class="sezione" id="grafici">
+
+<section  class="sezione" id="grafici"> <!Sezione che comprende tutti i grafici>
     <h1 class="titolo">Grafici</h1>
 
-       <section class="sezione">
+
+       <section class="sezione"> <!Sezione form grafico 1>
         <p>Strutture</p>
         <form name="f" method="get" action="tabelle.html">
             <select name="sceltaLuogo"  class="tendinaluogo">
@@ -66,47 +69,95 @@
             <input type="submit" value="Visualizza dati">
         </form>
 
+        <div id="graph"></div> <!Plotly stampa grafico 1>
+
+       </section>
+
+    <section class="sezione"> <!Sezione form grafico 2>
+        <p>Flussi Turistici</p>
+        <form name="f2" method="get" action="tabelle.html">
+            <select name="sceltaLuogo"  class="tendinaluogo">
+                <option name="italia" value="Regione" selected>Italia</option>
+                <option name="r1" value="ABRUZZO">Abruzzo</option>
+                <option name="r2" value="BASILICATA">Basilicata</option>
+                <option name="r3" value="CALABRIA">Calabria</option>
+                <option name="r4" value="CAMPANIA">Campania</option>
+                <option name="r5" value="EMILIA-ROMAGNA">Emilia-Romagna</option>
+                <option name="r6" value="FRIULI-VENEZIA-GIULIA">Friuli Venezia Giulia</option>
+                <option name="r7" value="LAZIO">Lazio</option>
+                <option name="r8" value="LIGURIA">Liguria</option>
+                <option name="r9" value="LOMBARDIA">Lombardia</option>
+                <option name="r10" value="MARCHE">Marche</option>
+                <option name="r11" value="MOLISE">Molise</option>
+                <option name="r12" value="PIEMONTE">Piemonte</option>
+                <option name="r13" value="PUGLIA">Puglia</option>
+                <option name="r14" value="SARDEGNA">Sardegna</option>
+                <option name="r15" value="SICILIA">Sicilia</option>
+                <option name="r16" value="TOSCANA">Toscana</option>
+                <option name="r17" value="TRENTINO-ALTO-ADIGE">Trentino-Alto Adige</option>
+                <option name="r18" value="UMBRIA">Umbria</option>
+                <option name="r19" value="VALLE-D'AOSTA">Valle D'Aosta</option>
+                <option name="r20" value="VENETO">Veneto</option>
+            </select>
+            <input type="button" value="CreaGraficoTuristi" onclick="graficoTuristi(document.f2)">
+            <input type="submit" value="Visualizza dati">
+        </form>
+            <div id="graphTuristi"><!Plotly stampa grafico 2>
+            </div>
+
+         </section>
+
+    <section class="sezione"> <!Sezione form grafico 1>
+        <p>Mappa </p>
+        <form name="f3" method="get" action="tabelle.html">
+            <select name="sceltaLuogo"  class="tendinaluogo">
+               <option name="italia" value="Regione" selected>Italia</option>
+                <!--<option name="r1" value="ABRUZZO">Abruzzo</option>
+                <option name="r2" value="BASILICATA">Basilicata</option>
+                <option name="r3" value="CALABRIA">Calabria</option>
+                <option name="r4" value="CAMPANIA">Campania</option>
+                <option name="r5" value="EMILIA-ROMAGNA">Emilia-Romagna</option>
+                <option name="r6" value="FRIULI-VENEZIA-GIULIA">Friuli Venezia Giulia</option>
+                <option name="r7" value="LAZIO">Lazio</option>
+                <option name="r8" value="LIGURIA">Liguria</option>
+                <option name="r9" value="LOMBARDIA">Lombardia</option>
+                <option name="r10" value="MARCHE">Marche</option>
+                <option name="r11" value="MOLISE">Molise</option>
+                <option name="r12" value="PIEMONTE">Piemonte</option>
+                <option name="r13" value="PUGLIA">Puglia</option>
+                <option name="r14" value="SARDEGNA">Sardegna</option>
+                <option name="r15" value="SICILIA">Sicilia</option>
+                <option name="r16" value="TOSCANA">Toscana</option>
+                <option name="r17" value="TRENTINO-ALTO-ADIGE">Trentino-Alto Adige</option>
+                <option name="r18" value="UMBRIA">Umbria</option>
+                <option name="r19" value="VALLE-D'AOSTA">Valle D'Aosta</option>
+                <option name="r20" value="VENETO">Veneto</option>-->
+            </select>
+            <select name="sceltaStrutture" class="tendinastrutture" onchange="visibilityStelle(this.value)">
+                <option name="TotaleHotel" value="TotaleHotel" >Hotel</option>
+                <option name="TotaleBeB" value="TotaleBeB">B&B</option>
+                <option name="TotaleAltreStrutture" value="TotaleAltreStrutture">ExtraAlberghiere</option>
+            </select>
+            <select name="sceltaStelle" class="tendinastelle">
+                <option name="TotaleHotel" value="TotaleHotel" selected>Tutte</option>
+                <option name="Hotel5Stelle" value="Hotel5Stelle">5 Stelle</option>
+                <option name="Hotel4Stelle" value="Hotel4Stelle">4 Stelle</option>
+                <option name="Hotel3Stelle" value="Hotel3Stelle">3 Stelle</option>
+                <option name="Hotel2Stelle" value="Hotel2Stelle">2 Stelle</option>
+                <option name="Hotel1Stelle" value="Hotel1Stelle">1 Stella</option>
+            </select>
+            <input type="button" value="Crea Grafico" onclick="grafico(document.f)">
+            <input type="submit" value="Visualizza dati">
+        </form>
+
+        <div id="graphMappa"><!Plotly stampa grafico 3>
+        </div>
+
+    </section>
 
 
-    <div id="graph">
 
-    </div>
-</section>
-<section class="sezione">
-    <p>Flussi Turistici</p>
-    <form name="f2" method="get" action="tabelle.html">
-        <select name="sceltaLuogo"  class="tendinaluogo">
-            <option name="italia" value="Regione" selected>Italia</option>
-            <option name="r1" value="ABRUZZO">Abruzzo</option>
-            <option name="r2" value="BASILICATA">Basilicata</option>
-            <option name="r3" value="CALABRIA">Calabria</option>
-            <option name="r4" value="CAMPANIA">Campania</option>
-            <option name="r5" value="EMILIA-ROMAGNA">Emilia-Romagna</option>
-            <option name="r6" value="FRIULI-VENEZIA-GIULIA">Friuli Venezia Giulia</option>
-            <option name="r7" value="LAZIO">Lazio</option>
-            <option name="r8" value="LIGURIA">Liguria</option>
-            <option name="r9" value="LOMBARDIA">Lombardia</option>
-            <option name="r10" value="MARCHE">Marche</option>
-            <option name="r11" value="MOLISE">Molise</option>
-            <option name="r12" value="PIEMONTE">Piemonte</option>
-            <option name="r13" value="PUGLIA">Puglia</option>
-            <option name="r14" value="SARDEGNA">Sardegna</option>
-            <option name="r15" value="SICILIA">Sicilia</option>
-            <option name="r16" value="TOSCANA">Toscana</option>
-            <option name="r17" value="TRENTINO-ALTO-ADIGE">Trentino-Alto Adige</option>
-            <option name="r18" value="UMBRIA">Umbria</option>
-            <option name="r19" value="VALLE-D'AOSTA">Valle D'Aosta</option>
-            <option name="r20" value="VENETO">Veneto</option>
-        </select>
-        <input type="button" value="CreaGraficoTuristi" onclick="graficoTuristi(document.f2)">
-        <input type="submit" value="Visualizza dati">
-    </form>
-    <div id="graphTuristi">
-    </div>
-    <div id="graphMappa">
-    </div>
 
-</section>
 
 </section>
 </div>

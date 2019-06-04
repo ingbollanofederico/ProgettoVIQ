@@ -11,11 +11,11 @@ body {
     margin-left:0.1em;
     margin-right:0.1em;
     margin-bottom:0.1em;
-    border: 0.02em solid maroon;
+    border: 0.1em solid maroon;
     text-align: center;
     line-height: 2;
     font-size: 200%;
-    color:black;
+    color: black;
     -webkit-border-radius: 0.1em;
     -moz-border-radius: 0.1em;
     border-radius: 0.5em;
@@ -70,11 +70,11 @@ li.menu  {
     margin-left:0.1em;
     margin-right:0.1em;
     margin-bottom:0.1em;
-    background-color: azure;
-    border-left: 0.05em solid maroon;
-    border-right: 0.05em solid maroon;
-    border-top: 0.05em solid maroon;
-    border-bottom: 0.05em solid maroon;
+    background-color:  azure;
+    border-left: 0.1em solid maroon;
+    border-right: 0.1em solid maroon;
+    border-top: 0.1em solid maroon;
+    border-bottom: 0.1em solid maroon;
     padding-left: 0.5em;
     padding-right: 0.5em;
 
