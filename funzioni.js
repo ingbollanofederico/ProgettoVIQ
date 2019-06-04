@@ -50,11 +50,11 @@ function decoloraMenu(x){
 
 
 
-function visibilityStelle(x){
+function visibilityStelle(x,){
 
     if(x!="TotaleHotel")
 
-        document.f.sceltaStelle.style.visibility="hidden";
+       document.f.sceltaStelle.style.visibility="hidden";
 
     else
         document.f.sceltaStelle.style.visibility="visible";
@@ -945,6 +945,223 @@ function grafico (f1){
 }
 
 
+function graficoMappa(f1) {
 
+    Plotly.purge("graphMappa");
+
+    var regione = f1.sceltaLuogo.value; //italia vs regioni
+
+    var struttura = f1.sceltaStrutture.value; //hotel beb altri
+
+    //attivo le strelle per gli hotel##########################
+    if (struttura === "TotaleHotel") {
+        struttura = f1.sceltaStelle.value; //stelle attive se hotel
+
+    }
+
+
+    if (regione === "Regione") {
+
+        Plotly.d3.csv("DATASET_REGIONI.csv", function (error, data) {
+            //Creazione
+            var regioni = [];
+            var numPresenze = [];
+            var latitude =[];
+            var longitude=[];
+            var hovertext=[];
+
+            for (let i = 0; i < data.length; i++) {
+                let reg = data[i][regione];
+                regioni.push(reg);
+
+                if(struttura === "FlussiPresenze2017") {
+                    var presenze = data[i][struttura];
+                    pres = presenze / 100000;
+                    numPresenze.push(pres);
+                }else{
+                    var presenze = data[i][struttura];
+                    pres = presenze / 100;
+                    numPresenze.push(pres);
+                }
+
+                let txt=reg+"<br>"+struttura+": "+presenze;
+                hovertext.push(txt);
+
+                let lat =data[i]["Latitude"];
+                latitude.push(lat);
+
+                let lon =data[i]["Longitude"];
+                longitude.push(lon);
+
+            }
+            debug:  console.log("A:" + regioni + " Geo: "+latitude+" - "+ longitude+" B:"+ numPresenze);
+
+            let trace = [{
+                type: 'scattergeo',
+                mode: 'markers+text',
+                hoverinfo: 'text',
+                hovertext: hovertext,
+                lon: longitude,
+                lat: latitude,
+
+                //text: regioni,
+                marker: {
+                    size: numPresenze,
+                    sizemode: 'area',
+                    sizemin: 0,
+                    sizeref: 1,
+                    color: numPresenze,
+                    cmin: 0,
+                    cmax: 100,
+                    colorscale: 'Cividis',
+
+                    line: {
+                        color: 'black'
+                    },
+                },
+                name: 'Citta italiane'
+            }];
+            let layout = {
+                margin: {t: 40, l: 70, r: 30, b: 100},
+
+                title: 'Presenze 2017 italia',
+                geo: {
+                    scope: 'europe',
+                },
+
+                updatemenus: [{
+                    y: 0.8,
+                    yanchor: 'top',
+                    buttons: [{
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Bluered'],
+                        label: 'rosso'
+                    }, {
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Blues'],
+                        label: 'blu'
+                    },{
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Cividis'],
+                        label: 'giallo'
+                    }, {
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Greens'],
+                        label: 'verde'
+                    }]
+                }]
+
+
+            };
+
+            Plotly.plot("graphMappa", trace, layout);
+        });
+
+    } else {
+
+        Plotly.d3.csv("DATASET_PROVINCE_LAT.csv", function (error, data) {
+            //Creazione
+            let prov = [];
+            let numPres = [];
+            var latitude =[];
+            var longitude=[];
+            var hovertext=[];
+
+
+            for (let i = 0; i < data.length; i++) {
+                if (data[i]["Regione"] === regione) {
+                    let pro = data[i]["Provincia"];
+                    prov.push(pro);
+
+                    if (struttura === "FlussiPresenze2017") {
+                        var presenze = data[i][struttura];
+                        pres = presenze / 100000;
+                        numPres.push(pres);
+                    } else {
+                        var presenze = data[i][struttura];
+                        pres = presenze / 100;
+                        numPres.push(pres);
+                    }
+
+                    let txt = pro + "<br>Turisti: " + presenze;
+                    hovertext.push(txt);
+
+                    let lat = data[i]["Latitude"];
+                    latitude.push(lat);
+
+                    let lon = data[i]["Longitude"];
+                    longitude.push(lon);
+
+                }
+            }
+
+            debug:  console.log("A:" + prov + " Geo: "+latitude+" - "+ longitude+" B:"+ numPres);
+
+            let trace = [{
+                type: 'scattergeo',
+                mode: 'markers+text',
+                hoverinfo: 'text',
+                hovertext: hovertext,
+                lon: longitude,
+                lat: latitude,
+
+                //text: regioni,
+                marker: {
+                    size: numPres,
+                    sizemode: 'area',
+                    sizemin: 0,
+                    sizeref: 1,
+                    color: numPres,
+                    cmin: 0,
+                    cmax: 100,
+                    colorscale: 'Cividis',
+
+                    line: {
+                        color: 'black'
+                    },
+                },
+                name: 'Citta italiane'
+            }];
+            let layout = {
+                margin: {t: 40, l: 70, r: 30, b: 100},
+
+                title: 'Presenze 2017 italia',
+                geo: {
+                    scope: 'europe',
+                },
+
+                updatemenus: [{
+                    y: 0.8,
+                    yanchor: 'top',
+                    buttons: [{
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Bluered'],
+                        label: 'rosso'
+                    }, {
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Blues'],
+                        label: 'blu'
+                    },{
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Cividis'],
+                        label: 'giallo'
+                    }, {
+                        method: 'restyle',
+                        args: ['marker.colorscale', 'Greens'],
+                        label: 'verde'
+                    }]
+                }]
+
+
+            };
+
+
+            Plotly.plot("graphMappa", trace, layout);
+
+
+        });
+    }
+
+}
 
 
