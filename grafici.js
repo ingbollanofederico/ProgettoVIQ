@@ -763,7 +763,7 @@ function graficoMappa(f1) {
 
     var regione = f1.sceltaLuogo.value; //italia vs regioni
 
-    var struttura = f1.sceltaStrutture.value; //hotel beb altri
+    var struttura = f1.sceltaStrutture2.value; //hotel beb altri
 
     //attivo le strelle per gli hotel##########################
     if (struttura === "TotaleHotel") {
