@@ -219,5 +219,10 @@ tr:hover em { /* visualizzato on-hover */
     color: rgba(150,0,0,1);
 }
 
+.graficoMappa{
+
+    height: 40em;
+}
+
 
 
