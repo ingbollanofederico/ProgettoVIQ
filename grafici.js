@@ -787,6 +787,8 @@ function graficoMappa(f1) {
                 let reg = data[i][regione];
                 regioni.push(reg);
 
+                var presenze;
+
                 if(struttura === "FlussiPresenze2017") {
                     var presenze = data[i][struttura];
                     pres = presenze / 100000;
