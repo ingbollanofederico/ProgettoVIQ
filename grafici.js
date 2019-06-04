@@ -288,7 +288,7 @@ function grafico (f1){
     Plotly.purge("graph");
 
     var regione = f1.sceltaLuogo.value; //italia vs regioni
-    var struttura = f1.sceltaStrutture.value; //hotel beb altri
+    var struttura = f1.sceltaStrutture1.value; //hotel beb altri
 
     //attivo le strelle per gli hotel##########################
     if (struttura === "TotaleHotel") {
