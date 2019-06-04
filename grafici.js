@@ -248,7 +248,18 @@ window.onload = function () {
 
             title: 'Presenze 2017 italia',
             geo: {
-                scope: 'europe',
+                projection: {
+                    type: 'equirectangular'
+                },
+
+               lataxis:{
+                    range:[35,48]
+               } ,
+                lonaxis:{
+                    range:[6,19]
+                },
+                scope: 'europe', resolution: "50",
+                showocean: true, oceancolor:"lightblue",
             },
 
             updatemenus: [{
@@ -841,7 +852,18 @@ function graficoMappa(f1) {
 
                 title: 'Presenze 2017 italia',
                 geo: {
-                    scope: 'europe',
+                    projection: {
+                        type: 'equirectangular'
+                    },
+
+                    lataxis:{
+                        range:[35,48]
+                    } ,
+                    lonaxis:{
+                        range:[6,19]
+                    },
+                    scope: 'europe', resolution: "50",
+                    showocean: true, oceancolor:"lightblue",
                 },
 
                 updatemenus: [{
@@ -942,9 +964,19 @@ function graficoMappa(f1) {
 
                 title: 'Presenze 2017 italia',
                 geo: {
-                    scope: 'europe',
-                },
+                    projection: {
+                        type: 'equirectangular'
+                    },
 
+                    lataxis:{
+                        range:[35,48]
+                    } ,
+                    lonaxis:{
+                        range:[6,19]
+                    },
+                    scope: 'europe', resolution: "50",
+                    showocean: true, oceancolor:"lightblue",
+                },
                 updatemenus: [{
                     y: 0.8,
                     yanchor: 'top',
