@@ -767,7 +767,7 @@ function graficoMappa(f1) {
 
     //attivo le strelle per gli hotel##########################
     if (struttura === "TotaleHotel") {
-        struttura = f1.sceltaStelle.value; //stelle attive se hotel
+        struttura = f1.sceltaStelle2.value; //stelle attive se hotel
 
     }
 
