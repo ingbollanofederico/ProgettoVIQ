@@ -18,12 +18,21 @@
     </ul>
 
 </div>
+<h2>Macro Descrizione del Problema Affrontato</h2>
+<p>Il progetto si è sviluppato attorno a un data-set istat proveniente da <a href="https://www.istat.it/it/archivio/210783">qui</a>, basato sul tracciamento dei flussi turistici e delle relative strutture frequentate nell’anno 2017. Ogni dato è presente sia da un punto di vista regionale, sia da una prospettiva a livello di province. Si è deciso perciò di sfruttare tali informazioni per rappresentarle non solo in formato tabulare, ma anche graficamente mediante l’ausilio di tecniche di visualizzazione dell’informazione.
+    La raccolta di informazioni in questo elaborato comprenderà un’ampia varietà di raffigurazioni: da grafici a barre a mappe, caratterizzati da un’alta dinamicità; tale aspetto è garantito dalla presenza di form e campi di input per l’interazione dell’utente.
+    Ogni pagina è caratterizzata da uno schema fisso di formattazione, dato dal codice del file “stile.css” e dalle funzioni dei file Javascript, che rispondono ad ActionEvent quali “onmouseover” e “onmouseleave”. Al caricamento delle pagine si è deciso di attuare fin da subito un approccio basato sulla “Visual Perception”, mediante funzioni che rispondono al “window.onload( )” all’interno degli script definiti.
+    Un ulteriore aspetto di adattabilità al client si ravvisa nella gestione dinamica dei campi dei form che, per esempio nel caso di scelta delle strutture che rispondono alla voce “Hotel”, farà comprarire un ulteriore menù a tendina per affinare la ricerca sul numero di stelle della struttura corrispondente.</p>
 Il lavoro si &egrave sviluppato in diversi momenti:
-<h3>Step 1</h3> <br> creazione css e html
-<h3>Step 1</h3> <br>
-<h3>Step 1</h3> <br>
+<h3>Step 1: Creazione Struttura HTML e CSS</h3> <br>
+<p>La struttura adottata per l'HTML si basa sull'utilizzo di elementi div e section, per delimitare ciascun macro area. Ogni pagina è caratterizzata da un menù per accedere alle altre pagine in modo veloce ed intuitivo, dietro al quale si sviluppa una parte del JS sviluppato nello <b>Step 2</b>. A livello di CSS si è deciso di attuare una tecnica basata sui float e i clear, preferiribile a una struttura a grid-container per gli scopi prefissati.<br> Nella scelta dei colori si è fatto riferimento al sito <a href="www.Paletton.com">Paletton</a>, per essere conformi ai precetti della Visual Perception, riguardo al contrasto, saturazione, luminosità, portabilità, chiarezza.</b></b></p>
+<h3>Step 2: Creazione del JS per CSV Parse, Grafici e Dinamicizzazione Contenuti HTML</h3> <br>
+<p>Come si può notare dalla dimensione del codice, questo step ha occupato la maggior parte del tempo, avendo dovuto in più occasioni selezionare i dati adatti ai nostri scopi. La mole di dati difatti avrebbe comportato, in fase iniziale, una rappresentazione dell'informazione ridondante e a volte spesso ripetitiva.<br> Mediante l'utilizzo della tecnologia Ajax, si è provveduto al caricamento delle strutture dati in formati adatti e tutto ciò è ravvisabile nella pagina <a href="tabelle.html">Tabelle</a><br>
+Per rendere più variegato il tutto, nella rappresentazione di tali dati per la pagina <a href="grafici.html">Grafici</a></p> si è deciso di sfruttare i costrutti di Plotly, adattandoli dinamicamente agli input immessi da form dall'utente.<br>
+Come ultimo passo di questa sezione, si è provveduto a rendere graficamente più idoneo (oltre che, soprattutto, funzionalmente) il menù: vero punto comune di tutte le pagine. Mediante funzioni in script lato client si è riusciti a tenere in rilievo la sezione del menù riguardante la pagina che si sta navigando, oltre che la possibilità di rendere interattive le altre sezioni che si vogliono esplorare.
+<h3>Step 3: Creazione della Mappa, Miglioramenti Diffusi</h3> <br>
+L'ultima parte del lavoro la si è voluta dedicare alla creazione di una raffigurazione più complicata lato codice, ma ancora più immediata dal punto di vista della visualizzazione: la mappa, mediante costrutto "scatterego" di Plotly. Come nel caso dei grafici a barre, anche in questo caso la mappa risponde a interazioni dinamiche per potere garantire un'offerta completa ed esaustiva.
 
-<h3>Step 1</h3>i
 
 
 
